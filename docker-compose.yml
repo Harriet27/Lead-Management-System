@@ -23,11 +23,11 @@ services:
     container_name: backend
     restart: always
     ports:
-      - "5000:5000"
+      - "3002:3002"
     depends_on:
       - mongodb
     environment:
-      - PORT=5000
+      - PORT=3002
       - NODE_ENV=production
       - MONGODB_URI=mongodb://mongodb:27017/lead_management
       - JWT_SECRET=your_jwt_secret_key_here
@@ -50,7 +50,7 @@ services:
     depends_on:
       - backend
     environment:
-      - BACKEND_API_URL=http://backend:5000
+      - BACKEND_API_URL=http://backend:3002
       - API_TOKEN=your_api_token_here
     networks:
       - app-network

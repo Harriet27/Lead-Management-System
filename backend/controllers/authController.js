@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+const jwt = require('jsonwebtoken');
+const User = require('../models/User.js');
 
 // Login user
-export const login = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     
@@ -28,7 +28,7 @@ export const login = async (req, res, next) => {
     // Generate JWT token
     const token = jwt.sign(
       { id: user._id, username: user.username, role: user.role },
-      process.env.JWT_SECRET,
+      'lead_management_secret',
       { expiresIn: '1d' }
     );
     
@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
 };
 
 // Register new user (admin only in production)
-export const register = async (req, res, next) => {
+const register = async (req, res, next) => {
   try {
     const { username, password, role } = req.body;
     
@@ -83,3 +83,4 @@ export const register = async (req, res, next) => {
   }
 };
 
+module.exports = { login, register };

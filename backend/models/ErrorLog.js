@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const errorLogSchema = new mongoose.Schema({
   errorMessage: {
@@ -30,5 +30,5 @@ errorLogSchema.index({ timestamp: -1 });
 
 const ErrorLog = mongoose.model('ErrorLog', errorLogSchema);
 
-export default ErrorLog;
+module.exports = ErrorLog;
 

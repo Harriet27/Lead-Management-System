@@ -1,9 +1,9 @@
-import express from 'express';
-import { 
+const express = require('express');
+const { 
   createLead, 
   getAllLeads, 
   getLeadById 
-} from '../controllers/leadController.js';
+} = require('../controllers/leadController.js');
 
 const router = express.Router();
 
@@ -16,5 +16,5 @@ router.get('/', getAllLeads);
 // Get a specific lead by ID
 router.get('/:id', getLeadById);
 
-export default router;
+module.exports = router;
 

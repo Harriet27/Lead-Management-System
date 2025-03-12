@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
-export const authenticateToken = (req, res, next) => {
+const authenticateToken = (req, res, next) => {
   // Get auth header
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -11,7 +11,7 @@ export const authenticateToken = (req, res, next) => {
   
   try {
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, 'lead_management_secret');
     req.user = decoded;
     next();
   } catch (error) {
@@ -19,7 +19,7 @@ export const authenticateToken = (req, res, next) => {
   }
 };
 
-export const authorizeAdmin = (req, res, next) => {
+const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
   } else {
@@ -27,3 +27,4 @@ export const authorizeAdmin = (req, res, next) => {
   }
 };
 
+module.exports = { authenticateToken, authorizeAdmin };

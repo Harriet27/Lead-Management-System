@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
-import Lead from '../models/Lead.js';
-import User from '../models/User.js';
-import ErrorLog from '../models/ErrorLog.js';
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
+const Lead = require('../models/Lead.js');
+const User = require('../models/User.js');
+const ErrorLog = require('../models/ErrorLog.js');
 
 // Load environment variables
 dotenv.config();

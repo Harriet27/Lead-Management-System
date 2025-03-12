@@ -18,7 +18,7 @@ export async function GET(
     }
     
     // Forward to backend API
-    const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:5000'
+    const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:3002'
     const response = await fetch(`${backendUrl}/api/leads/${id}`, {
       headers: {
         'Authorization': authHeader

@@ -1,6 +1,6 @@
-import ErrorLog from '../models/ErrorLog.js';
+const ErrorLog = require('../models/ErrorLog.js');
 
-export const errorLogger = async (err, req, res, next) => {
+const errorLogger = async (err, req, res, next) => {
   try {
     // Create error log entry
     const errorLog = new ErrorLog({
@@ -27,3 +27,4 @@ export const errorLogger = async (err, req, res, next) => {
   }
 };
 
+module.exports = { errorLogger };

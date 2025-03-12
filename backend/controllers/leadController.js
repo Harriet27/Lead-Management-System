@@ -1,8 +1,8 @@
-import Lead from '../models/Lead.js';
-import { sendToThirdParty } from '../services/thirdPartyService.js';
+const Lead = require('../models/Lead.js');
+// const { sendToThirdParty } = require('../services/thirdPartyService.js');
 
 // Create a new lead
-export const createLead = async (req, res, next) => {
+const createLead = async (req, res, next) => {
   try {
     const { name, email, phone, source, message } = req.body;
     
@@ -24,12 +24,12 @@ export const createLead = async (req, res, next) => {
     await lead.save();
     
     // Send to third-party service
-    try {
-      await sendToThirdParty(lead);
-    } catch (error) {
-      // Log error but don't fail the request
-      console.error('Error sending to third-party service:', error);
-    }
+    // try {
+    //   await sendToThirdParty(lead);
+    // } catch (error) {
+    //   // Log error but don't fail the request
+    //   console.error('Error sending to third-party service:', error);
+    // }
     
     res.status(201).json({
       message: 'Lead created successfully',
@@ -46,7 +46,7 @@ export const createLead = async (req, res, next) => {
 };
 
 // Get all leads
-export const getAllLeads = async (req, res, next) => {
+const getAllLeads = async (req, res, next) => {
   try {
     // Pagination
     const page = parseInt(req.query.page) || 1;
@@ -73,7 +73,7 @@ export const getAllLeads = async (req, res, next) => {
 };
 
 // Get a specific lead by ID
-export const getLeadById = async (req, res, next) => {
+const getLeadById = async (req, res, next) => {
   try {
     const lead = await Lead.findById(req.params.id);
     
@@ -87,3 +87,8 @@ export const getLeadById = async (req, res, next) => {
   }
 };
 
+module.exports = {
+  createLead,
+  getAllLeads,
+  getLeadById
+}

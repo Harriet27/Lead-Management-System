@@ -1,4 +1,4 @@
-import LeadForm from '@/components/lead-form'
+import LeadForm from '../components/lead-form'
 
 export default function Home() {
   return (

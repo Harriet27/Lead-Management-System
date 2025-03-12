@@ -71,7 +71,7 @@ export default function LeadForm() {
       // Get UTM source from URL if available
       const source = searchParams.get('utm_source') || 'direct'
       
-      const response = await fetch('/api/leads', {
+      const response = await fetch('http://localhost:3002/api/leads', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
